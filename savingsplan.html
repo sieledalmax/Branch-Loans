@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="IMG-20250323-WA0008.png">
-    <title>TALA - Confirmation</title>
+    <title>Branch - Confirmation</title>
     <style>
         :root {
             --primary-color: #2a5bd7;
@@ -345,6 +345,39 @@
             border-top: 1px solid #edf2f7;
         }
 
+        /* New styles for improved till copy section */
+        .till-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 0.8rem 0;
+        }
+
+        .till-number {
+            background: #f0f5ff;
+            padding: 0.8rem 1rem;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-block;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        .copy-till-btn {
+            padding: 0.7rem 1rem;
+            font-size: 0.95rem;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+        }
+
+        .copy-till-btn i {
+            margin-right: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 1rem;
@@ -358,6 +391,21 @@
             
             .verify-btn {
                 max-width: none;
+            }
+
+            .till-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .till-number {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .copy-till-btn {
+                max-width: 100%;
+                width: 100%;
             }
         }
     </style>
@@ -384,21 +432,23 @@
             <p>
                 Based on selected loan amount of <strong id="loanAmount"></strong>,
                 <strong>Everglow Investments Inc</strong> requires you to save
-                <strong id="savingsAmount"></strong> (selected saving plan) to your Branch account. This helps strengthen your credit profile. Your savings will be withdrawable exclusively upon successful completion of your first loan repayment cycle.
+                <strong id="savingsAmount"></strong> (selected saving plan) to your Branch Loans account. This helps strengthen your credit profile. Your savings will be withdrawable exclusively upon successful completion of your first loan repayment cycle.
             </p>
             <button class="btn" onclick="location.href='ccow.html'">Change Savings Plan</button>
         </div>
 
         <div class="info-section">
-            <h2>How to Save to Your TALA A/C</h2>
+            <h2>How to Save to Your Branch Loans Account</h2>
             <div class="payment-instructions">
                 <p><i class="fas fa-mobile-alt"></i><strong>Go to M-Pesa</strong></p>
                 <p><i class="fas fa-shopping-cart"></i><strong>Lipa na M-Pesa:</strong> Buy Goods & Services</p>
-                <p><i class="fas fa-hashtag"></i>
-                    <strong>Enter Till Number:</strong>
-                    <span id="tillNumber">8067532</span>
-                    <button class="btn" onclick="copyTill(this)">Click to Copy Till</button>
-                </p>
+                <p><i class="fas fa-hashtag"></i><strong>Enter Till Number:</strong></p>
+                <div class="till-container">
+                    <span id="tillNumber" class="till-number">8067532</span>
+                    <button class="btn copy-till-btn" onclick="copyTill(this)">
+                        <i class="far fa-copy"></i> Copy Till
+                    </button>
+                </div>
                 <p><i class="fas fa-money-bill-wave"></i><strong>Enter Amount:</strong> Ksh <strong id="payAmount"></strong></p>
                 <p><i class="fas fa-lock"></i><strong>Complete Payment:</strong> Enter M-Pesa PIN</p>
             </div>
@@ -428,7 +478,7 @@
     </div>
 
     <footer class="footer">
-        &copy; 2025 TALA. All rights reserved.
+        &copy; 2025 Branch Loans. All rights reserved.
     </footer>
 
     <!-- Firebase App (Core SDK) -->
@@ -476,10 +526,12 @@
         function copyTill(button) {
             const till = document.getElementById("tillNumber").textContent;
             navigator.clipboard.writeText(till).then(() => {
-                button.textContent = "Till Copied!";
+                const icon = button.querySelector('i');
+                icon.className = 'fas fa-check';
+                button.innerHTML = '<i class="fas fa-check"></i> Till Copied!';
                 button.classList.add("copied");
                 setTimeout(() => {
-                    button.textContent = "Click to Copy Till";
+                    button.innerHTML = '<i class="far fa-copy"></i> Copy Till';
                     button.classList.remove("copied");
                 }, 2000);
             });
