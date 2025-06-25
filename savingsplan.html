@@ -222,17 +222,6 @@
             max-width: 300px;
         }
 
-        .play-store-btn {
-            display: block;
-            margin: 2rem auto 0;
-            text-align: center;
-        }
-
-        .play-store-btn img {
-            height: 60px;
-            border-radius: var(--border-radius);
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -422,6 +411,55 @@
                 max-width: 100%;
                 width: 100%;
             }
+
+            /* Improved mobile text sizing */
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .info-section p {
+                font-size: 0.95rem;
+            }
+
+            .payment-instructions p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                font-size: 0.95rem;
+                padding: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .logo i {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.2rem;
+                margin: 0.5rem;
+            }
+
+            .info-section {
+                padding: 1.2rem;
+            }
+
+            .payment-instructions {
+                padding: 1rem;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+            }
+
+            .info-section p {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -464,15 +502,11 @@
                         <i class="far fa-copy"></i> Copy Till
                     </button>
                 </div>
-                <p><i class="fas fa-money-bill-wave"></i><strong>Enter Amount:</strong> Ksh <strong id="payAmount"></strong></p>
+                <p><i class="fas fa-money-bill-wave"></i><strong>Enter Amount:</strong> <strong id="payAmount"></strong></p>
                 <p><i class="fas fa-lock"></i><strong>Complete Payment:</strong> Enter M-Pesa PIN</p>
             </div>
             <button class="btn verify-btn" onclick="showModal()">Verify Payment to Initiate Loan Disbursement</button>
         </div>
-
-        <a href="https://play.google.com/store/apps/details?id=com.refmas.semasi&hl=en" target="_blank" class="play-store-btn">
-            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
-        </a>
 
         <div id="successModal" class="modal" onclick="hideModal(event)">
             <div class="modal-content" onclick="event.stopPropagation()">
