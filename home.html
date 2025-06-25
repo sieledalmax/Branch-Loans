@@ -18,7 +18,7 @@
             --success-color: #38a169;
             --warning-color: #dd6b20;
             --danger-color: #e53e3e;
-            --border-radius: 12px;
+            --border-radius: 16px; /* Increased border radius for rounded edges */
             --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
         }
@@ -31,7 +31,7 @@
         }
 
         body {
-            background-color: #f7fafc;
+            background: linear-gradient(135deg, #8ce9e9 0%, #e2e8f0 100%); /* Bluish tint gradient */
             color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
@@ -53,10 +53,18 @@
             max-width: 900px;
             margin: 2rem auto;
             padding: 2.5rem;
-            background: white;
+            background: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
             border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15); /* Softer shadow */
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             flex: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
         }
 
         .header {
@@ -100,11 +108,12 @@
             gap: 0.6rem;
             color: var(--light-text);
             font-size: 0.9rem;
-            background: #f8fafc;
+            background: rgba(248, 250, 252, 0.8); /* Slightly transparent */
             padding: 0.8rem 1.2rem;
             border-radius: 50px;
-            border: 1px solid #edf2f7;
+            border: 1px solid rgba(237, 242, 247, 0.8);
             transition: var(--transition);
+            backdrop-filter: blur(2px);
         }
 
         .trust-badge:hover {
@@ -118,13 +127,14 @@
         }
 
         .intro-card {
-            background-color: #f0f5ff;
+            background-color: rgba(240, 245, 255, 0.8); /* Slightly transparent */
             border-left: 4px solid var(--primary-color);
             padding: 1.5rem;
             border-radius: var(--border-radius);
             margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(2px);
         }
 
         .intro-card:before {
@@ -165,9 +175,10 @@
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent */
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(2px);
         }
 
         .amount-button:hover {
@@ -178,7 +189,7 @@
 
         .amount-button.active {
             border-color: var(--primary-color);
-            background-color: #f0f5ff;
+            background-color: rgba(240, 245, 255, 0.8); /* Slightly transparent */
         }
 
         .amount-button.active:after {
@@ -212,12 +223,13 @@
 
         .note-box {
             margin-top: 2rem;
-            background-color: #fffaf0;
+            background-color: rgba(255, 250, 240, 0.8); /* Slightly transparent */
             border-left: 4px solid var(--warning-color);
             padding: 1.2rem;
             border-radius: var(--border-radius);
             display: flex;
             gap: 1rem;
+            backdrop-filter: blur(2px);
         }
 
         .note-box i {
@@ -238,7 +250,7 @@
             font-size: 0.85rem;
             margin-top: 0.8rem;
             font-weight: 600;
-            background: #fff5f5;
+            background: rgba(255, 245, 245, 0.8); /* Slightly transparent */
             padding: 0.4rem;
             border-radius: 4px;
         }
@@ -355,7 +367,7 @@
             color: var(--light-text);
             font-size: 0.85rem;
             padding: 1.5rem 0;
-            border-top: 1px solid #edf2f7;
+            border-top: 1px solid rgba(237, 242, 247, 0.5); /* Slightly transparent */
         }
 
         .footer-links {
@@ -385,7 +397,7 @@
             .login-container {
                 margin: 1rem;
                 padding: 1.8rem;
-                border-radius: 0;
+                border-radius: 12px; /* Keep rounded edges on mobile */
             }
 
             .amounts {
